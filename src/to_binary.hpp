@@ -41,7 +41,6 @@ std::string to_binary(
     std::string const   inv_delim   {byte_delim.crbegin(), byte_delim.crend()};
     std::size_t const   useful_len = std::min(sizeof(T)*CHAR_BIT, bit_len);
 
-
     for (std::size_t i=0; i < useful_len; ++i)
     {
         if (i % CHAR_BIT == 0)
