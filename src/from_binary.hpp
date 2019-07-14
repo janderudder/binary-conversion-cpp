@@ -1,21 +1,27 @@
 #pragma once
 #include <string>
 #include <string_view>
+#include <type_traits>
 
 /**
- *  Convert a binary representation -a string- into a computable number.
+ *  Convert a string containing a binary representation of a number into
+ *  this computable number of specified type.
  *  Characters other than 0 and 1 are ignored.
  */
 template <typename T>
 T from_binary(std::string_view str_bin) noexcept
 {
-    std::uint64_t value = 0;
-    std::string str_inv_bin {str_bin.crbegin(), str_bin.crend()};
+    auto value = 0ULL;
+    auto counter = 0ULL;
 
-    for (std::size_t i=0; i < str_inv_bin.length(); ++i)
+    for (auto it =str_bin.crbegin(); it != str_bin.crend(); it = std::next(it))
     {
-        if (str_inv_bin[i] == '1')
-            value |= (std::uint64_t{1} << i);
+        if (*it == '1') {
+            value |= (1ULL << counter);
+            ++counter;
+        }
+        else if (*it == '0')
+            ++counter;
     }
 
     return static_cast<T>(value);

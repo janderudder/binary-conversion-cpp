@@ -1,9 +1,12 @@
 #include <iostream>
 #include <cstddef>
+#include <cstdint>
 #include "to_binary.hpp"
 #include "from_binary.hpp"
 
-
+/**
+ *  Demonstrating usage of binary conversion functions
+ */
 int main()
 {
     const char* delim = "'";
@@ -37,14 +40,14 @@ int main()
     std::cout
         << from_binary<std::int_fast64_t>(b_fasti64)                << "\n";
     std::cout
-        << static_cast<unsigned>(from_binary<std::byte>(b_byte))     << "\n";
+        << static_cast<unsigned>(from_binary<std::byte>(b_byte))    << "\n";
     std::cout
-        << static_cast<unsigned>(from_binary<char>(b_c))        << "\n";
+        << static_cast<unsigned>(from_binary<char>(b_c))            << "\n";
     std::cout
-        << static_cast<std::size_t>(from_binary<std::size_t>(b_ull))   << "\n";
+        << static_cast<std::size_t>(from_binary<std::size_t>(b_ull))<< "\n";
     std::cout
-        << from_binary<float>(b_f)           << "\n";
+        << from_binary<float>(b_f)                                  << "\n";
     std::cout
-        << from_binary<double>(b_dbl)        << "\n";
+        << from_binary<double>(b_dbl)                               << "\n";
 
 }
